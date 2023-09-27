@@ -13,6 +13,11 @@ spring:
             - Path=/api/product/**
           filters:
             - StripPrefix=2
+            - name: EjemploCookie
+              args:
+                mensaje: Hola mi mensaje personalizado
+                cookieValor: ealfriadez
+                cookieNombre: usuario
         - id: ms-cart
           uri:
             lb://ms-cart-2024
@@ -20,3 +25,7 @@ spring:
             - Path=/api/cart/**
           filters:
             - StripPrefix=2
+#          - AddRequestHeader=token-request, 123456
+#          - AddResponseHeader=token-response, 12345678
+#          - SetResponseHeader=Content-Type, text/plain
+#          - AddRequestParameter=nombre, Jean
