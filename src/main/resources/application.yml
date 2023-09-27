@@ -1,0 +1,22 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: ms-gateway-server
+  cloud:
+    gateway:
+      routes:
+        - id: ms-product
+          uri:
+            lb://ms-productos-2023
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - StripPrefix=2
+        - id: ms-cart
+          uri:
+            lb://ms-cart-2024
+          predicates:
+            - Path=/api/cart/**
+          filters:
+            - StripPrefix=2
