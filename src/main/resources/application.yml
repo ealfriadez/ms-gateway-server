@@ -13,11 +13,12 @@ spring:
             - Path=/api/product/**
           filters:
             - StripPrefix=2
-            - name: EjemploCookie
-              args:
-                mensaje: Hola mi mensaje personalizado
-                cookieValor: ealfriadez
-                cookieNombre: usuario
+#            - name: EjemploCookie
+#              args:
+#                mensaje: Hola mi mensaje personalizado
+#                cookieValor: ealfriadez
+#                cookieNombre: usuario
+#          - EjemploCookie=Hola mi mensaje personalizado, usuario, JeanRamal
         - id: ms-cart
           uri:
             lb://ms-cart-2024
@@ -29,3 +30,11 @@ spring:
 #          - AddResponseHeader=token-response, 12345678
 #          - SetResponseHeader=Content-Type, text/plain
 #          - AddRequestParameter=nombre, Jean
+        - id: ms-security-server
+          uri: lb://ms-security-server
+          predicates:
+            - Path=/api/security/**
+          filters:
+            - StripPrefix=2
+jwt:
+  key: jwtKey#SuperSecret$JavaMicroservices#JUN22
