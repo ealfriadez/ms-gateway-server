@@ -36,5 +36,9 @@ spring:
             - Path=/api/security/**
           filters:
             - StripPrefix=2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://ms-discovery-server:8761/eureka
 jwt:
   key: jwtKey#SuperSecret$JavaMicroservices#JUN22
